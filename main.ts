@@ -19,6 +19,7 @@ export const ap = new Apprentice(
 console.log(ap.courses)
 showApprenticeData(ap);
 showStatistics(ap);
+showCoursesApprentice(ap);
 
 function showApprenticeData(apprentice: Apprentice): void {
     let apprenticeTable: HTMLElement = document.getElementById("apprentice")!;
@@ -70,4 +71,25 @@ function showStatistics(apprentice: Apprentice): void {
     `;
 
     statisticsTable.appendChild(trElement);
+}
+
+function showCoursesApprentice(apprentice: Apprentice): void {
+    let coursesTable: HTMLElement = document.getElementById("courses")!;
+
+    let coursesTBody: HTMLElement = document.createElement("tbody");
+
+    for (let course of apprentice.courses) {
+        let trElement: HTMLElement = document.createElement("tr");
+        trElement.innerHTML = `
+            <td>${course.name}</td>
+            <td>${course.hours}</td>
+            <td>${course.grade}</td>
+            <td>${course.certificate}</td>
+            <td>${course.year}</td>
+        `;
+
+        coursesTBody.appendChild(trElement);
+    }
+
+    coursesTable.appendChild(coursesTBody);
 }
