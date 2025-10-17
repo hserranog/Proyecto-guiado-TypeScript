@@ -1,16 +1,28 @@
 import { Apprentice, EducationalLevel } from "./apprentice.js";
+import { Course } from './course.js'
+
+let courses = [
+    new Course("Prácticas Esenciales para el Agilismo", 20, 90, true, 2019),
+    new Course("Ingeniería de Software para la Web", 15, 99, true, 2018),
+    new Course("Pruebas Automatizadas", 25, 50, false, 2020),
+    new Course("Principios de Diseño y Arquitectura", 30, 75, true, 2020)
+]
 
 export const ap = new Apprentice(
     "Hector Gustavo",
     "Serrano Gutierrez",
     "avatar.png",
     30,
-    EducationalLevel.MASTERDEGREE);
+    EducationalLevel.MASTERDEGREE,
+    courses);
 
+console.log(ap.courses)
 showApprenticeData(ap);
+showStatistics(ap);
 
-function showApprenticeData(apprentice: Apprentice) {
+function showApprenticeData(apprentice: Apprentice): void {
     let apprenticeTable: HTMLElement = document.getElementById("apprentice")!;
+
     let tbodyApprentice = document.createElement("tbody");
 
     tbodyApprentice.innerHTML = `
@@ -35,8 +47,27 @@ function showApprenticeData(apprentice: Apprentice) {
         <td>Age:</td>
         <td>${apprentice.age}</td>
     </tr>
-    `
+    `;
 
     apprenticeTable.appendChild(tbodyApprentice);
 }
 
+function showStatistics(apprentice: Apprentice): void {
+    let statisticsTable: HTMLElement = document.getElementById("statistics")!;
+
+    let numberCertificates: number = apprentice.getCertificesCourses();
+
+    let trElement: HTMLElement = document.createElement("tr");
+    trElement.innerHTML = `
+        <td>
+            <b>
+                Courses Accomplished
+            </b>
+        </td>
+        <td>
+            ${numberCertificates}
+        </td>
+    `;
+
+    statisticsTable.appendChild(trElement);
+}
