@@ -16,14 +16,29 @@ export const ap = new Apprentice(
     EducationalLevel.MASTERDEGREE,
     courses);
 
+let apprenticeTable: HTMLElement = document.getElementById("apprentice")!;
+let statisticsTable: HTMLElement = document.getElementById("statistics")!;
+let coursesTable: HTMLElement = document.getElementById("courses")!;
+let filterBtn: HTMLElement = document.getElementById("filter-button")!;
+
+filterBtn.onclick = () => {
+    let searchText: HTMLInputElement = <HTMLInputElement>document.getElementById("search-text")!;
+
+    let text: string = searchText.value;
+    text = (text == null)?"":text;
+    coursesTable.getElementsByTagName("tbody")[0].remove();
+
+    let filtereCourses: Course[] = ap.courses.filter(c => c.name.match(text));
+
+    showCoursesApprentice(filtereCourses);
+}
+
 console.log(ap.courses)
 showApprenticeData(ap);
 showStatistics(ap);
-showCoursesApprentice(ap);
+showCoursesApprentice(ap.courses);
 
 function showApprenticeData(apprentice: Apprentice): void {
-    let apprenticeTable: HTMLElement = document.getElementById("apprentice")!;
-
     let tbodyApprentice = document.createElement("tbody");
 
     tbodyApprentice.innerHTML = `
@@ -54,8 +69,6 @@ function showApprenticeData(apprentice: Apprentice): void {
 }
 
 function showStatistics(apprentice: Apprentice): void {
-    let statisticsTable: HTMLElement = document.getElementById("statistics")!;
-
     let numberCertificates: number = apprentice.getCertificesCourses();
 
     let trElement: HTMLElement = document.createElement("tr");
@@ -73,12 +86,10 @@ function showStatistics(apprentice: Apprentice): void {
     statisticsTable.appendChild(trElement);
 }
 
-function showCoursesApprentice(apprentice: Apprentice): void {
-    let coursesTable: HTMLElement = document.getElementById("courses")!;
-
+function showCoursesApprentice(courses: Course[]): void {
     let coursesTBody: HTMLElement = document.createElement("tbody");
 
-    for (let course of apprentice.courses) {
+    for (let course of courses) {
         let trElement: HTMLElement = document.createElement("tr");
         trElement.innerHTML = `
             <td>${course.name}</td>
