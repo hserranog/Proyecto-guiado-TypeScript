@@ -31,9 +31,8 @@ filterBtn.onclick = () => {
     let filtereCourses: Course[] = ap.courses.filter(c => c.name.match(text));
 
     showCoursesApprentice(filtereCourses);
-}
+};
 
-console.log(ap.courses)
 showApprenticeData(ap);
 showStatistics(ap);
 showCoursesApprentice(ap.courses);
@@ -89,17 +88,20 @@ function showStatistics(apprentice: Apprentice): void {
 function showCoursesApprentice(courses: Course[]): void {
     let coursesTBody: HTMLElement = document.createElement("tbody");
 
+    let state: string[] = courses.map(c => (c.grade > 60) ? 'green' : 'red')
+    let index: number = 0;
+
     for (let course of courses) {
         let trElement: HTMLElement = document.createElement("tr");
         trElement.innerHTML = `
             <td>${course.name}</td>
             <td>${course.hours}</td>
-            <td>${course.grade}</td>
+            <td style="color:${state[index]}">${course.grade}</td>
             <td>${course.certificate}</td>
             <td>${course.year}</td>
         `;
-
         coursesTBody.appendChild(trElement);
+        index++;
     }
 
     coursesTable.appendChild(coursesTBody);

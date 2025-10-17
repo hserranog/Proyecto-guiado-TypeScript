@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=B612');
+
+h1,h2{
+    text-align: center;
+}
+
+body {
+    font-family: "B612";
+    font-size: 18px;
+  }
+
+#apprentice {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); /* this adds the "card" effect */
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+    border: solid 1px;
+    margin-left:auto; 
+    margin-right:auto;
+  }
+#apprentice tbody tr{
+    text-align: center;
+    border: solid 1px;
+}
+
+#statistics{
+    text-align: center;
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+button,input{
+    display: inline-block;
+    font-family: "B612";
+    font-size: 18px;
+}
+.filter-button {
+    position: relative;
+    margin-left:40%;
+    margin-right:40%;
+    margin-top:1%;
+    margin-bottom:1%;
+}
+
+#courses {
+    border: solid 1px #DDEEEE;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left:auto; 
+    margin-right:auto;
+}
+#courses thead th {
+    background-color: #DDEFEF;
+    border: solid 1px #DDEEEE;
+    color: #336B6B;
+    padding: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #fff;
+}
+#courses tbody td {
+    border: solid 1px #DDEEEE;
+    color: #333;
+    padding: 10px;
+    text-align: center;
+    text-shadow: 1px 1px 1px #fff;
+}

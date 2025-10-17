@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>First TypeScript Project</title>
     <link rel="icon" href="data:.">
+    <link rel="stylesheet" type="text/css" href="tallertypescript.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="./scripts/main.js"></script>
 </head>
@@ -14,8 +15,10 @@
     <h2>Statistics</h2>
     <table class="table" id="statistics"></table>
     <h2>Courses Taken</h2>
-    <input type="text" class="form-control" id="search-text" placeholder="Filter by Name">
-    <button type="button" id="filter-button" class="btn btn-success">Apply</button>
+    <div class="filter-button">
+        <input type="text" class="form-control" id="search-text" placeholder="Filter by Name">
+        <button type="button" id="filter-button" class="btn btn-success">Apply</button>
+    </div>
     <table class="table" id="courses">
         <thead class="thead-dark">
             <tr>
